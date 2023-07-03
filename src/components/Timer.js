@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Answer from './Answer';
 
 const Timer = ({ time, onTimeUp, keyProp }) => {
   const [seconds, setSeconds] = useState(parseInt(time));
@@ -23,7 +24,7 @@ const Timer = ({ time, onTimeUp, keyProp }) => {
     <div key={keyProp}>
       <div className="card mt-4 has-background-warning">
         <div className="card-content has-text-centered">
-          <h1 className="title">Countdown: {seconds} seconds</h1>
+          <h1 className="title">Time Left: {seconds} seconds</h1>
         </div>
       </div>
     </div>

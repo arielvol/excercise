@@ -11,7 +11,7 @@ function Result({ score, totalNumberOfQuestions, startOverCallback }) {
 
   return (
     <div>
-      <div className="card mt-4 has-background-white-ter">
+      <div className="card mt-4 has-background-primary">
         <div className="card-content has-text-centered">
           <p className="title">{getResultMessage()}</p>
           <button className="button is-danger" onClick={() => startOverCallback()}>Start Over</button>

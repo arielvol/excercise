@@ -64,6 +64,13 @@ function Quizz() {
     setTimerKey((prevKey) => prevKey + 1);
   };
 
+  const resetQuizz = () => {
+    setCurrentQuestionNumber(1);
+    setScore(0);
+    setIsQuizzOver(false);
+    setTimerTime(TIMER_TIME);
+  }
+
   const onAnswerSelected = (answer) => {
     if (isQuizzOver) {
       return;
@@ -79,10 +86,7 @@ function Quizz() {
   };
 
   const onStartOverClicked = () => {
-    setCurrentQuestionNumber(1);
-    setScore(0);
-    setIsQuizzOver(false);
-    setTimerTime(TIMER_TIME);
+    resetQuizz();
   };
 
   return (
