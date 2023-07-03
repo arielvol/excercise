@@ -7,8 +7,10 @@ import Question from "./Question";
 import AnswerList from "./AnswerList";
 import Result from "./Result";
 
+const TIMER_TIME = 60;
+
 function Quizz() {
-  const [timerTime, setTimerTime] = useState(10);
+  const [timerTime, setTimerTime] = useState(TIMER_TIME);
   const [timerKey, setTimerKey] = useState(0);
 
   const [numberOfQuestionsLeft, setNumberOfQuestionsLeft] = useState(0);
@@ -80,7 +82,7 @@ function Quizz() {
     setCurrentQuestionNumber(1);
     setScore(0);
     setIsQuizzOver(false);
-    setTimerTime(10);
+    setTimerTime(TIMER_TIME);
   }
 
 
