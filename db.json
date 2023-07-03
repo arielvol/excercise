@@ -1,8 +1,9 @@
-{ "user": {
-  "id": 1,
-  "name": "John Doe",
-  "email": "john.doe@gmail.com"
-},
+{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@gmail.com"
+  },
   "questions": [
     {
       "id": 1,
@@ -12,7 +13,7 @@
         "Golda Meir",
         "Yitzhak Rabin",
         "Menachem Begin"
-    ]
+      ]
     },
     {
       "id": 2,
@@ -22,7 +23,7 @@
         "Tel Aviv",
         "Haifa",
         "Eilat"
-    ]
+      ]
     },
     {
       "id": 3,
@@ -32,7 +33,7 @@
         "Red",
         "Blue",
         "Yellow"
-    ]
+      ]
     }
   ],
   "correct_answers": [
@@ -48,5 +49,8 @@
       "id": 3,
       "correct": "Blue"
     }
-  ]
+  ],
+  "number_of_questions": {
+    "number": 3
+  }
 }

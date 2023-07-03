@@ -1,9 +1,9 @@
+import Quizz from './components/Quizz';
 
 function App() {
   return (
     <div>
-      Start here ...
-      Good Luck :)
+      <Quizz/>
     </div>
   );
 }
