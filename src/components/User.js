@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import QuizzService from "../services/QuizzService";
 
 function User() {
   const [userName, setUserName] = useState('');
 
+  const getUser = async () => {
+    const response = await QuizzService.getUser();
+    setUserName(response.data.name)
+  }
+
   useEffect(() => {
-    fetch(' http://localhost:3030/user')
-      .then(response => response.json())
-      .then(data => setUserName(data.name));
+    getUser();
   }, []);
 
   return (
