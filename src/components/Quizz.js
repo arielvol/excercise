@@ -21,6 +21,22 @@ function Quizz() {
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [isQuizzOver, setIsQuizzOver] = useState(false);
 
+  useEffect(() => {
+    getNumberOfQuestions();
+  }, []);
+
+  useEffect(() => {
+    if (currentQuestionNumber > 0) {
+      if (currentQuestionNumber > numberOfQuestionsLeft) {
+        setTimerTime(0);
+        setIsQuizzOver(true);
+      } else {
+        getNextQuestion(currentQuestionNumber);
+        resetTimer();
+      }
+    }
+  }, [currentQuestionNumber]);
+
   const getQuestionByNumber = async (number) => {
     const reposense = await QuizzService.getQuestions(number);
     return reposense.data;
@@ -40,29 +56,13 @@ function Quizz() {
     setCurrentCorrectAnswer(response.data);
   };
 
-  useEffect(() => {
-    getNumberOfQuestions();
-  }, []);
-
-  useEffect(() => {
-    if (currentQuestionNumber > 0) {
-      if (currentQuestionNumber > numberOfQuestionsLeft) {
-        setTimerTime(0);
-        setIsQuizzOver(true);
-      } else {
-        getNextQuestion(currentQuestionNumber);
-        resetTimer();
-      }
-    }
-  }, [currentQuestionNumber]);
-
   const setNextQuestion = () => {
     setCurrentQuestionNumber((prevNum) => prevNum + 1);
   };
 
   const resetTimer = () => {
     setTimerKey((prevKey) => prevKey + 1);
-  }
+  };
 
   const onAnswerSelected = (answer) => {
     if (isQuizzOver) {
@@ -83,15 +83,14 @@ function Quizz() {
     setScore(0);
     setIsQuizzOver(false);
     setTimerTime(TIMER_TIME);
-  }
-
+  };
 
   return (
     <div className="container">
       <User />
       <div className="columns">
         <div className="column">
-          <Timer key={timerKey} time={timerTime} onTimeUp={onTimerUp}/>
+          <Timer key={timerKey} time={timerTime} onTimeUp={onTimerUp} />
         </div>
         <div className="column">
           <Score score={score} />
@@ -102,7 +101,13 @@ function Quizz() {
         <AnswerList answers={answersList} onAnswerSelected={onAnswerSelected} />
       </div>
       <div>
-        {isQuizzOver && <Result score={score} totalNumberOfQuestions={numberOfQuestionsLeft} startOverCallback={onStartOverClicked}/>}
+        {isQuizzOver && (
+          <Result
+            score={score}
+            totalNumberOfQuestions={numberOfQuestionsLeft}
+            startOverCallback={onStartOverClicked}
+          />
+        )}
       </div>
     </div>
   );
